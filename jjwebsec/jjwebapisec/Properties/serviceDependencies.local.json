@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "connectionInfo": "App registration: jjwebapisec, Tenant: JJAzure Company (jjazure.org - Microsoft Entra ID)",
+      "type": "identityapp.default"
+    }
+  }
+}

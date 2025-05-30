@@ -1,0 +1,9 @@
+//@WebApplication1_HostAddress = http://localhost:5157
+@WebApplication1_HostAddress = https://localhost:7139
+@access_token = XXXXXXXXX
+
+GET {{WebApplication1_HostAddress}}/api/values
+Accept: application/json
+Authorization: Bearer {{access_token}}
+
+###
