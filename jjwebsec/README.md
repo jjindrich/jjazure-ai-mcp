@@ -14,3 +14,14 @@ Configure app registration for web app in Entra ID:
 Configure app registration for API in Entra ID:
 - update client ID in appsettings.json values ClientId and Audience
 - update client ID in source code of web app calling API
+
+## Deployment
+
+### Host in Azure Container Apps
+
+Configuration for web app:
+- Environment variable: ASPNETCORE_FORWARDEDHEADERS_ENABLED=true to enable forwarded headers because of Entra ID forwarding schema.
+- Environment variable: Api__BaseUrl to point to the base API URL.
+
+### Protect API with Azure API Management
+
