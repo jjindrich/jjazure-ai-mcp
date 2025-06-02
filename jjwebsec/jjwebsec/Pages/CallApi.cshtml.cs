@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
+using System.Net.Http;
 
 namespace jjwebsec.Pages
 {
@@ -12,16 +13,20 @@ namespace jjwebsec.Pages
     {
         private readonly ILogger<CallApiModel> _logger;
         private readonly ITokenAcquisition _tokenAcquisition;
-        
-        public CallApiModel(ILogger<CallApiModel> logger, ITokenAcquisition tokenAcquisition)
+        private readonly HttpClient _httpClient;
+
+        public CallApiModel(
+            ILogger<CallApiModel> logger,
+            ITokenAcquisition tokenAcquisition,
+            IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
             _tokenAcquisition = tokenAcquisition;
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
         }
                 
         public async Task<IActionResult> OnGetAsync()
         {
-
             string token = null;
             try
             {
@@ -45,17 +50,18 @@ namespace jjwebsec.Pages
 
             ViewData["AccessToken"] = token;
 
-            using (var httpClient = new HttpClient())
+            using (_httpClient)
             {
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await httpClient.GetAsync("https://localhost:7139/api/values");
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var response = await _httpClient.GetAsync("/api/values");
                 if (response.IsSuccessStatusCode)
                 {
-                    ViewData["ApiMessage"] = await response.Content.ReadAsStringAsync();
+                    var apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewData["ApiMessage"] = apiResponse;
                 }
                 else
                 {
-                    ViewData["ApiMessage"] = "Failed to retrieve message from API.";
+                    ViewData["ApiMessage"] = "Failed to retrieve message from API. Status Code: " + response.StatusCode;
                 }
             }
 
