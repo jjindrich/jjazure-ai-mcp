@@ -45,4 +45,6 @@ app.MapRazorPages()
    .WithStaticAssets();
 app.MapControllers();
 
+app.UseStaticFiles();
+
 app.Run();
