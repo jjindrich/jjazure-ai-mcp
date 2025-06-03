@@ -14,9 +14,12 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/api/values", () =>
-{
-    return new string[] { "value1", "value2" };
+app.MapGet("/api/values", (HttpContext httpContext) =>
+{    
+    var user = httpContext.User;
+    string username = user.FindFirst("preferred_username")?.Value ?? "Unknown";
+
+    return new string[] { "value1", "value2", username };
 })
 .RequireAuthorization();
 
