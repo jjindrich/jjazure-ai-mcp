@@ -25,3 +25,15 @@ Configuration for web app:
 
 ### Protect API with Azure API Management
 
+Configuration for API
+- register API in Azure API Management - GET /api/values
+- remove subscription key requirement
+- add policy to validate JWT token
+
+```xml
+        <validate-azure-ad-token tenant-id="tenant_id">
+            <audiences>
+                <audience>client_id_backend_api_></audience>
+            </audiences>
+        </validate-azure-ad-token>
+```
