@@ -1,5 +1,12 @@
 # ASP.Net Core web app call API with JWT authentication
 
+## Design
+
+```mermaid
+graph TD;
+  WebApp-->API;
+```
+
 ## Setup Entra ID App registrations
 
 You need to create two app registrations in Entra ID (Azure AD) for the web app and the API. Follow these steps:
