@@ -9,10 +9,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+// Add health check services
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Add health endpoint that doesn't require authentication
+app.MapHealthChecks("/healthz").AllowAnonymous();
 
 app.MapGet("/api/values", (HttpContext httpContext) =>
 {    
