@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36121.58 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11018.127 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jjmcpserver", "jjmcpserver\jjmcpserver.csproj", "{D13049D8-D529-4670-8806-95DBA257DAF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jjwebchat", "jjwebchat\jjwebchat.csproj", "{656ADE9D-A142-48B7-BE83-69DDAFB995A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D13049D8-D529-4670-8806-95DBA257DAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D13049D8-D529-4670-8806-95DBA257DAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D13049D8-D529-4670-8806-95DBA257DAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656ADE9D-A142-48B7-BE83-69DDAFB995A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656ADE9D-A142-48B7-BE83-69DDAFB995A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656ADE9D-A142-48B7-BE83-69DDAFB995A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656ADE9D-A142-48B7-BE83-69DDAFB995A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
