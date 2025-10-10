@@ -13,7 +13,7 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"))
     // Enable token acquisition to call the downstream API (the minimal API)
     .EnableTokenAcquisitionToCallDownstreamApi(
-        new string[] { "api://4ddc5c46-ed4c-451c-b45b-dbbf3cf86ae3/.default" })
+        new string[] { "api://08b89274-ca9c-475e-803a-31df7e8f65ec/All" })
     .AddInMemoryTokenCaches();
 
 builder.Services.AddAuthorization(options =>

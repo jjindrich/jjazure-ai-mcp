@@ -8,7 +8,7 @@ using System.Net.Http;
 namespace jjwebsec.Pages
 {
     [Authorize]
-    [AuthorizeForScopes(Scopes = new string[] { "api://4ddc5c46-ed4c-451c-b45b-dbbf3cf86ae3/.default" })]
+    [AuthorizeForScopes(Scopes = new string[] { "api://08b89274-ca9c-475e-803a-31df7e8f65ec/All" })]
     public class CallApiModel : PageModel
     {
         private readonly ILogger<CallApiModel> _logger;
@@ -28,10 +28,14 @@ namespace jjwebsec.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             string token = null;
+            if (!(User?.Identity?.IsAuthenticated ?? false))
+            {
+                return Challenge();
+            }
             try
             {
                 // client secret is required for confidential clients
-                token = await _tokenAcquisition.GetAccessTokenForUserAsync(new string[] { "api://4ddc5c46-ed4c-451c-b45b-dbbf3cf86ae3/.default" });
+                token = await _tokenAcquisition.GetAccessTokenForUserAsync(new string[] { "api://08b89274-ca9c-475e-803a-31df7e8f65ec/All" });
             }
             catch (MicrosoftIdentityWebChallengeUserException ex)
             {
