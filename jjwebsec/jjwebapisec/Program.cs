@@ -85,4 +85,12 @@ app.MapGet("/api/values", (HttpContext httpContext) =>
 })
 .RequireAuthorization();
 
+app.MapGet("/api/value/{id}", (int id, HttpContext httpContext) =>
+{
+    var user = httpContext.User;
+    string username = user.FindFirst("preferred_username")?.Value ?? "Unknown";
+    return new string[] { $"{id} for {username}" };
+})
+.RequireAuthorization();
+
 app.Run();
